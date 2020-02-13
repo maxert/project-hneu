@@ -1,0 +1,14 @@
+.container_new{
+max-width: 1366px;
+margin: 0 auto;
+}
+.navbar {
+    background-color: #b3b3b3!important;
+
+}
+.container_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 20px;
+}
