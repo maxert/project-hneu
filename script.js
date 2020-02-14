@@ -3,7 +3,11 @@ window.onload = () => {
   var massiveGet = JSON.parse(localStorage.getItem("massiveSave"));
   document.querySelectorAll(".text_edit").forEach((Element, i) => {
     if (massiveGet !== null) {
+      if(massiveGet[i]==="undefined"){
+
+      }else{
       Element.innerText = massiveGet[i];
+      }
     }
     Element.setAttribute("data-index", i);
     massiveSave[i] = Element.innerText;
