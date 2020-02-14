@@ -1,22 +1,14 @@
 window.onload = () => {
-  var massiveSave = [];
-
-  var massiveGet = localStorage.getItem("massiveSave");
-  if (massiveGet === null) {
-
-  } else {
-    var sliceGet = massiveGet.split(",")
-  }
-
-
-
+  var massiveSave = {};
+  var massiveGet = JSON.parse(localStorage.getItem("massiveSave"));
   document.querySelectorAll(".text_edit").forEach((Element, i) => {
-    if (sliceGet !== undefined) {
-      Element.innerText = sliceGet[i];
+    if (massiveGet !== null) {
+      Element.innerText = massiveGet[i];
     }
     Element.setAttribute("data-index", i);
-    massiveSave.push(Element.innerText);
+    massiveSave[i] = Element.innerText;
   });
+
   document.addEventListener("click", function (event) {
     document.querySelectorAll(".text_edit").forEach(Element => {
       var e = Element;
@@ -34,21 +26,21 @@ window.onload = () => {
         event.target.parentElement.querySelectorAll(".text_edit")[0].focus();
       } else if (event.target.classList.contains("save")) {
         event.target.parentElement.querySelectorAll(".text_edit")[0].contentEditable = "false";
-        localStorage.setItem("massiveSave", massiveSave);
+        localStorage.setItem("massiveSave", JSON.stringify(massiveSave, null, 4));
       } else {
         e.contentEditable = "false";
-        localStorage.setItem("massiveSave", massiveSave);
+        localStorage.setItem("massiveSave", JSON.stringify(massiveSave, null, 4));
       }
     });
   });
   document.querySelectorAll(".text_edit").forEach(Element => {
     Element.onkeypress = () => {
       massiveSave[Element.dataset.index] = Element.innerText;
-      localStorage.setItem("massiveSave", massiveSave);
+      localStorage.setItem("massiveSave", JSON.stringify(massiveSave, null, 4));
     }
     Element.onkeyup = () => {
       massiveSave[Element.dataset.index] = Element.innerText;
-      localStorage.setItem("massiveSave", massiveSave);
+      localStorage.setItem("massiveSave", JSON.stringify(massiveSave, null, 4));
     }
   })
 

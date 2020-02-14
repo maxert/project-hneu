@@ -12,3 +12,7 @@ margin: 0 auto;
     grid-gap: 20px;
     margin-top: 20px;
 }
+.btn-outline-success{
+    color: white;
+    background-color: #28a745;
+}
